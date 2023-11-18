@@ -128,6 +128,7 @@
       var textLog = document.getElementById("text-log")
       var reg = document.getElementById("register")
       var button = document.getElementById("btn")
+      var left_card = document.querySelector(".left-login-snow")
 
       function register() {
         log.classList.add("hidden")
@@ -135,6 +136,7 @@
         reg.classList.add("visible")
         log.classList.remove("visible")
         textLog.classList.remove("visible")
+        left_card.classList.toggle("left-register")
         button.style.left = "90px"
       }
 
@@ -142,6 +144,7 @@
         log.classList.add("visible")
         textLog.classList.add("visible")
         reg.classList.remove("visible")
+        left_card.classList.toggle("left-register")
         button.style.left = "0"
       }
 
