@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login_register.css" />
+    <style>
+      .hidden {
+        visibility: hidden;
+      }
+      .visible {
+        visibility: visible;
+      }
+
+      .witch-mode {
+        background: url(../images/Storm.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body class="snow witch">
+    <label class="switch">
+      <input type="checkbox" id="checkbox" onclick="switchRole()" />
+      <span class="slider round"></span>
+    </label>
+    <div class="container">
+      <div class="card-login-snow-white">
+        <div class="left-login-snow"></div>
+        <div class="right-login">
+          <img src="images/now whit.svg" class="logo" />
+          <div class="form-box">
+            <!-- toggle button  login-register -->
+            <div class="button-box">
+              <div id="btn"></div>
+              <button type="button" class="toggle-btn" onclick="login()">
+                Log in
+              </button>
+              <button type="button" class="toggle-btn" onclick="register()">
+                Register
+              </button>
+            </div>
+            <p id="text-log">Welcome to Your Story</p>
+            <!-- form login -->
+            <form action="" id="login" class="input-group">
+              <input
+                type="text"
+                class="input-field"
+                placeholder="Username"
+                required
+              />
+              <input
+                type="password"
+                class="input-field"
+                placeholder="Password"
+                required
+              /><button type="submit" class="submit-btn">Log In</button>
+            </form>
+            <!-- Form Register -->
+            <form action="" id="register" class="input-group hidden">
+              <p>Start Your Story</p>
+              <input
+                type="text"
+                class="input-field"
+                placeholder="Username"
+                required
+              />
+
+              <input
+                type="text"
+                class="input-field"
+                placeholder="Name"
+                required
+              />
+
+              <input
+                type="password"
+                class="input-field"
+                placeholder="Password"
+              />
+
+              <input
+                type="password"
+                class="input-field"
+                placeholder="Confirm Password"
+              />
+              <div>
+                <label>Role :</label> <input type="radio" /><label for=""
+                  >Prince</label
+                >
+                <input type="radio" /><label for="">Dwarf</label>
+              </div>
+
+              <button type="submit" class="btn-register">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="card-login-witch">
+        <div class="left-login-witch"></div>
+        <div class="right-login">
+          <img src="images/now whit.svg" class="logo" />
+          <div class="form-box">
+            <p id="text-log-witch">Welcome to Your Story</p>
+            <!-- form login -->
+            <form action="" id="login" class="input-group">
+              <input
+                type="text"
+                class="input-field"
+                placeholder="Username"
+                required
+              />
+              <input
+                type="password"
+                class="input-field"
+                placeholder="Password"
+                required
+              /><button type="submit" class="submit-btn">Log In</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var log = document.getElementById("login")
+      var textLog = document.getElementById("text-log")
+      var reg = document.getElementById("register")
+      var button = document.getElementById("btn")
+
+      function register() {
+        log.classList.add("hidden")
+        textLog.classList.add("hidden")
+        reg.classList.add("visible")
+        log.classList.remove("visible")
+        textLog.classList.remove("visible")
+        button.style.left = "90px"
+      }
+
+      function login() {
+        log.classList.add("visible")
+        textLog.classList.add("visible")
+        reg.classList.remove("visible")
+        button.style.left = "0"
+      }
+
+      function switchRole() {
+        var element = document.body
+        element.classList.toggle("witch-mode")
+
+        var checkbox = document.getElementById("checkbox")
+        var snowWhite = document.querySelector(".card-login-snow-white")
+        var witch = document.querySelector(".card-login-witch")
+        var logreg = document.querySelector(".button-box")
+        if (checkbox.checked == true) {
+          snowWhite.classList.add("hidden")
+          snowWhite.classList.remove("visible")
+          witch.classList.add("visible")
+        } else {
+          snowWhite.classList.add("visible")
+          witch.classList.add("hidden")
+          witch.classList.remove("visible")
+        }
+      }
+    </script>
+  </body>
+</html>

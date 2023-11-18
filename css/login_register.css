@@ -1,0 +1,343 @@
+@font-face {
+  font-family: dans-disney-ui;
+  src: url(../Font/dans-disney-font/DansDisneyUi-x5Aq.ttf);
+}
+@font-face {
+  font-family: white-dream;
+  src: url(../Font/white-dream-font/WhiteDreamPersonalUseOnlyRegular-L37Rn.otf);
+}
+@font-face {
+  font-family: new-walt-disney;
+  src: url(../Font/new-waltograph-font/NewWaltDisneyFontRegular-BPen.ttf);
+}
+
+body {
+  background: url(../images/snow03.gif), url(../images/background-login1.avif);
+  background-color: lightgray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+.card-login-snow-white {
+  width: 851.586px;
+  height: 509.498px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login-witch {
+  width: 851.586px;
+  height: 509.498px;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  visibility: hidden;
+}
+
+.left-login-snow {
+  width: 474.759px;
+  height: 499px;
+  flex-shrink: 0;
+  border-radius: 50px 0px 0px 50px;
+  border: 5px solid #fff;
+  background: url(../images/LeftCard.svg),
+    linear-gradient(358deg, #0c0c07 -5.14%, #657bb0 64.54%, #d6dfff 102.74%);
+}
+
+.left-login-witch {
+  width: 474.759px;
+  height: 499px;
+  flex-shrink: 0;
+  border-radius: 50px 0px 0px 50px;
+  border: 5px solid #fff;
+  background: url(../images/witchLoginBg.svg),
+    linear-gradient(
+      358deg,
+      #0c0c07 -5.14%,
+      #181029 26.89%,
+      #a78c9d 64.54%,
+      #90788b 102.74%
+    );
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#text-log-witch {
+  margin-top: 77px;
+}
+.right-login {
+  width: 370px;
+  margin-left: -6px;
+  height: 499px;
+  flex-shrink: 0;
+}
+
+.right-login > .logo {
+  margin-top: 23px;
+  margin-left: 4px;
+}
+
+p {
+  text-align: center;
+  font-family: white-dream;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+
+label {
+  font-family: new-walt-disney;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.form-login {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pass {
+  margin-top: 20px;
+}
+input[type="text"],
+input[type="password"] {
+  width: 260px;
+  height: 30px;
+  flex-shrink: 0;
+  border-style: none;
+  border-bottom: 1px solid #817e7e;
+  background: linear-gradient(
+    180deg,
+    rgba(254, 249, 239, 0) 0%,
+    rgba(254, 249, 239, 0) 100%
+  );
+}
+
+input:focus {
+  outline: none;
+}
+::placeholder {
+  font-family: new-walt-disney;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.submit-btn {
+  margin-top: 60px;
+  width: 266.81px;
+  height: 35.062px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #ffdf40;
+  border-style: none;
+  color: #000;
+  font-family: dans-disney-ui;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.submit-btn:hover {
+  background-color: #f3d330;
+  cursor: pointer;
+}
+
+.btn-register {
+  margin-top: 20px;
+  width: 266.81px;
+  height: 35.062px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #ffdf40;
+  border-style: none;
+  color: #000;
+  font-family: dans-disney-ui;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btn-register:hover {
+  background-color: #f3d330;
+  cursor: pointer;
+}
+
+/* style toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: 30px;
+  margin-left: 1350px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #556691;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(100, 96, 117);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #202634;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 3px #000000;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.button-box {
+  width: 176px;
+  height: 38px;
+  margin: 19px auto;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.209);
+  box-shadow: 0 0 5px 5px #0000003b;
+  border-radius: 30px;
+  display: flex;
+  z-index: 1;
+}
+.toggle-btn {
+  padding: 10px 30px;
+  width: 120px;
+  height: 38px;
+  margin-top: 0px !important;
+  background: #ffdf40;
+  border-style: none;
+  color: #000;
+  font-family: dans-disney-ui;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: black;
+  font-weight: 400;
+  transition: 0.3s ease;
+  margin-top: -50px;
+  z-index: 1;
+  font-size: 16px;
+}
+
+.toggle-btn:nth-of-type(1) {
+  position: absolute;
+  margin-left: -15px;
+}
+
+.toggle-btn:nth-of-type(2) {
+  margin-left: 68px;
+}
+.toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+#btn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 88px;
+  height: 38px;
+  background: #ffdf40;
+  border-radius: 30px;
+  transition: 0.5s;
+  z-index: -1;
+}
+
+#login {
+  left: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#register {
+  top: 240px;
+  position: absolute;
+  left: 770px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#register > p {
+  margin-bottom: 10px;
+  margin-left: -75px;
+}
+
+.form-box {
+  width: 380px;
+  height: 370px;
+  padding: 5px;
+  border-radius: 2em;
+  overflow: hidden;
+}
+
+.input-group {
+  width: 370px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
