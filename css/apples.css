@@ -1,0 +1,217 @@
+@font-face {
+  font-family: dans-disney-ui;
+  src: url(../Font/dans-disney-font/DansDisneyUi-x5Aq.ttf);
+}
+
+@font-face {
+  font-family: new-walt-disney;
+  src: url(../Font/new-waltograph-font/NewWaltDisneyFontRegular-BPen.ttf);
+}
+
+.snow-white-apple {
+  position: absolute;
+  margin-left: 100px;
+  padding-top: 50px;
+  z-index: -1;
+}
+
+.p-snow-white {
+  margin-left: 520px;
+  font-family: new-walt-disney;
+  color: #fff;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 2px;
+}
+
+.grid-apples {
+  position: absolute;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: transparent;
+  padding: 10px;
+  margin-top: 110px;
+  margin-left: 550px;
+}
+
+.grid-item {
+  padding: 20px;
+}
+
+.grid-item:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+.text-prince {
+  color: #fff;
+  font-family: dans-disney-ui;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 3px;
+  margin-top: 140px;
+  -webkit-text-stroke: 1px black;
+}
+.img-prince {
+  padding-top: 50px;
+}
+
+.btn-heal {
+  position: absolute;
+  padding-top: 300px;
+  margin-left: 850px;
+  cursor: pointer;
+}
+
+.btn-heal:hover {
+  opacity: 0.8;
+}
+
+.img-prince2 {
+  width: 250px;
+  padding-top: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.text-prince2 {
+  color: #fff;
+  font-family: dans-disney-ui;
+  width: 700px;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 3px;
+  margin-top: 200px;
+  -webkit-text-stroke: 1px black;
+}
+
+.text-dwarf {
+  color: #fff;
+  font-family: new-walt-disney;
+  width: 700px;
+  font-size: 70px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 3px;
+  margin-top: 250px;
+  -webkit-text-stroke: 1px black;
+  margin-left: 100px;
+}
+
+.img-witch {
+  width: 300px;
+  padding-top: 80px;
+  margin-left: 50px;
+}
+
+.text-witch {
+  color: #fff;
+  font-family: new-walt-disney;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.75px;
+  padding-top: 20px;
+  margin-left: 70px;
+}
+.btn-insert {
+  position: absolute;
+  padding-top: 120px;
+  margin-left: -416px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.btn-insert:hover {
+  opacity: 0.9;
+}
+.container-table {
+  position: absolute;
+  padding-top: 170px;
+  margin-left: 480px;
+}
+
+table {
+  width: 800px;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 10px 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+thead > tr > th {
+  background-color: #000000;
+}
+
+tbody > tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+tbody > td {
+  position: relative;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.action > a {
+  text-decoration: none;
+  width: 80px;
+  height: 25px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: new-walt-disney;
+  padding-bottom: 5px;
+  font-size: 24px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.update {
+  color: black;
+}
+
+.delete {
+  color: white;
+  background-color: black !important;
+}
+
+.update:hover,
+.delete:hover {
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}

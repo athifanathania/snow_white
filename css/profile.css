@@ -1,0 +1,110 @@
+@font-face {
+  font-family: dans-disney-ui;
+  src: url(../Font/dans-disney-font/DansDisneyUi-x5Aq.ttf);
+}
+
+@font-face {
+  font-family: new-walt-disney;
+  src: url(../Font/new-waltograph-font/NewWaltDisneyFontRegular-BPen.ttf);
+}
+
+.content {
+  margin-top: 50px;
+}
+.form-profile {
+  margin-top: 25px;
+  margin-left: 40px;
+  width: 760px;
+  height: 400px;
+  border-radius: 15px;
+  background: #fff;
+  padding: 30px;
+}
+
+h2 {
+  font-family: dans-disney-ui;
+  color: #000;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-top: 0px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+input[type="text"] {
+  border: 1px solid gray;
+  border-radius: 8px;
+  position: relative;
+  width: 715px;
+  height: 50px;
+  margin: 10px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 2px solid black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-left: 20px;
+  font-size: large;
+}
+
+textarea {
+  border: 1px solid gray;
+  resize: none;
+  overflow-y: hidden;
+  border-radius: 8px;
+  position: relative;
+  width: 715px;
+  height: 100px;
+  margin: 10px;
+  margin-bottom: 20px;
+  background-color: transparent;
+  padding-top: 15px;
+  border: 2px solid black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-left: 20px;
+  font-size: large;
+}
+
+input[type="submit"] {
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 653px;
+  width: 139px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: #f9e322;
+  color: #000000;
+  font-family: dans-disney-ui;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  opacity: 0.7;
+}
+label {
+  position: absolute;
+  top: -9px;
+  z-index: 1;
+  left: 1em;
+  background-color: #fff;
+  color: black;
+  padding: 0 5px;
+  color: #000;
+  font-family: new-walt-disney;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
