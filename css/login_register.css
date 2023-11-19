@@ -289,7 +289,6 @@ input:checked + .slider:before {
   outline: none;
   color: black;
   font-weight: 400;
-  transition: 0.3s ease;
   margin-top: -50px;
   z-index: 1;
   font-size: 16px;
@@ -315,7 +314,6 @@ input:checked + .slider:before {
   height: 38px;
   background: #ffdf40;
   border-radius: 30px;
-  transition: 0.5s;
   z-index: -1;
 }
 
