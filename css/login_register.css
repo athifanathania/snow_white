@@ -326,8 +326,8 @@ input:checked + .slider:before {
   gap: 15px;
 }
 #register {
-  top: 240px;
-  position: absolute;
+  z-index: 1;
+  margin-top: -270px;
   left: 770px;
   display: flex;
   flex-direction: column;
