@@ -136,7 +136,8 @@
         reg.classList.add("visible")
         log.classList.remove("visible")
         textLog.classList.remove("visible")
-        left_card.classList.toggle("left-register")
+        left_card.classList.remove("left-login-snow")
+        left_card.classList.add("left-register")
         button.style.left = "90px"
       }
 
@@ -145,6 +146,8 @@
         textLog.classList.add("visible")
         reg.classList.remove("visible")
         left_card.classList.toggle("left-register")
+        left_card.classList.remove("left-register")
+        left_card.classList.add("left-login-snow")
         button.style.left = "0"
       }
 
