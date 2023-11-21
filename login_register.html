@@ -8,6 +8,7 @@
     <style>
       .hidden {
         visibility: hidden;
+        transition: none !important;
       }
       .visible {
         visibility: visible;
@@ -22,7 +23,11 @@
   </head>
   <body class="snow witch">
     <label class="switch">
-      <input type="checkbox" id="checkbox" onclick="switchRole()" />
+      <input
+        type="checkbox"
+        id="checkbox"
+        onclick="switchRole(); hideAnimated()"
+      />
       <span class="slider round"></span>
     </label>
     <div class="container">
@@ -46,9 +51,11 @@
             <form action="" id="login" class="input-group">
               <input
                 type="text"
+                id="inputUsername"
                 class="input-field"
                 placeholder="Username"
                 required
+                oninput="checkWitch()"
               />
               <input
                 type="password"
@@ -107,9 +114,11 @@
             <form action="" id="login" class="input-group">
               <input
                 type="text"
+                id="inputUsername"
                 class="input-field"
                 placeholder="Username"
                 required
+                oninput="checkWitch()"
               />
               <input
                 type="password"
@@ -168,6 +177,14 @@
           witch.classList.add("hidden")
           witch.classList.remove("visible")
         }
+      }
+
+      function hideAnimated() {
+        var btn = document.getElementById("btn")
+        var toggle = document.querySelector(".toggle-btn")
+
+        btn.classList.toggle("hidden")
+        toggle.classList.toggle("hidden")
       }
     </script>
   </body>
