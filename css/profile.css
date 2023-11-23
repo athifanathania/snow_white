@@ -108,14 +108,3 @@ label {
   font-weight: 400;
   line-height: normal;
 }
-
-#profile-picture {
-  margin-top: 580px;
-  margin-left: 540px;
-  background-color: transparent;
-}
-
-#input-picture {
-  margin-left: 180px;
-  margin-top: 8px;
-}
