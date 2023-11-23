@@ -44,7 +44,7 @@ input[type="text"] {
   width: 715px;
   height: 50px;
   margin: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: transparent;
   border: 2px solid black;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -59,9 +59,9 @@ textarea {
   border-radius: 8px;
   position: relative;
   width: 715px;
-  height: 100px;
+  height: 80px;
   margin: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-color: transparent;
   padding-top: 15px;
   border: 2px solid black;
@@ -107,4 +107,15 @@ label {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+#profile-picture {
+  margin-top: 580px;
+  margin-left: 540px;
+  background-color: transparent;
+}
+
+#input-picture {
+  margin-left: 180px;
+  margin-top: 8px;
 }

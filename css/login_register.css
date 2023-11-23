@@ -223,7 +223,7 @@ input:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #556691;
+  background-color: rgba(169, 198, 229, 0.685);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -235,17 +235,17 @@ input:focus {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: rgb(100, 96, 117);
+  background-color: #ffdf40;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #202634;
+  background-color: #525252;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 3px #000000;
+  box-shadow: 0 0 3px #525252;
 }
 
 input:checked + .slider:before {
