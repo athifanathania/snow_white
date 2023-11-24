@@ -88,6 +88,7 @@ input[type="submit"] {
   font-weight: 400;
   line-height: normal;
   cursor: pointer;
+  border-style: none;
 }
 
 input[type="submit"]:hover {
@@ -107,4 +108,29 @@ label {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+#delete {
+  text-decoration: none;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 503px;
+  width: 139px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: red;
+  color: #ffffff;
+  font-family: dans-disney-ui;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+#delete:hover {
+  opacity: 0.8;
 }
