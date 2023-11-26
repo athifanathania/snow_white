@@ -1,6 +1,7 @@
 <?php
 include "koneksi.php";
 session_start();
+header('Refresh: 5; URL=login_register.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -63,32 +63,55 @@ $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM us
           case "dwarf":
             include ("apples_dwarf.php");
             break;
-          case "snow_white":?>
-      <img class="snow-white-apple" src="images/apples_img.png" width="250px" />
-      <p class="p-snow-white">
-        Snow White is hungry. Choose an apple for Snow White !
-      </p>
-      <div class="grid-apples">
-        <!-- 
-                1. while
-                2. href diisi jenis apel
-                3. jika memilih apel beracun, location header=apple_poison
-              -->
-        <a href="" class="grid-item"><img src="images/apples/apel 2.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 4.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 3.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 1.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 3.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 2.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 2.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 1.svg" /></a>
-        <a href="" class="grid-item"><img src="images/apples/apel 4.svg" /></a>
-      </div>
+          case "snow_white":
+            ?>
+            <img class="snow-white-apple" src="images/apples_img.png" width="250px" />
+            <p class="p-snow-white">
+              Snow White is hungry. Choose an apple for Snow White !
+            </p>
+            
+            <div class="grid-apples">
+              <?php
+              
+              $viewapel = mysqli_query($koneksi,"SELECT * FROM apel");
+              $images = glob('images/apples/{*.svg}', GLOB_BRACE);
+              
+              while($lihatapel = mysqli_fetch_array($viewapel)){
+                $random = array_rand($images);
+                $randomImage = $images[$random];
+                ?>
+                <form method="post" action="">
+                  <input type="hidden" name="selected_apple" value="<?php echo $lihatapel['id']; ?>">
+                  <button type="submit" name="select_apple">
+                    <img src="<?php echo $randomImage; ?>" />
+                  </button>
+                </form>
+                <?php
+                }
+                ?>
+        
+            </div>
       <?php
             break;
           default:
-          
           }
+
+          if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])){
+            $selected_apple = $_POST['selected_apple'];
+            $selected_query = mysqli_query($koneksi, "SELECT * FROM apel WHERE id='$selected_apple'");
+            $selected_apel = mysqli_fetch_array($selected_query);
+            $query = mysqli_query($koneksi,"UPDATE user SET status = 'poisoned' where id=1");
+            if($selected_apel['detail_apel'] === 'Poisonous' && $query){
+              header("Location: apple_poison.php");
+              exit();
+            }elseif ($selected_apel['detail_apel'] === 'Fresh'){
+              if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
+                $_SESSION['apples_count']--;
+              }
+            }
+          }
+          
+          
           ?>
     </div>
   </div>

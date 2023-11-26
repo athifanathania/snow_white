@@ -10,6 +10,16 @@ if(isset($_POST['login'])){
     $query = mysqli_query($koneksi,"SELECT * FROM user WHERE username = '$username' AND password = '$password'");
     if($query -> num_rows == 1){
         $row = $query->fetch_assoc();
+        if ($row['role'] == 'snow_white' && $row['status'] == 'poisoned') {
+          ?>
+          <script>
+            alert("You cannot log in. Snow White is poisoned!");
+            document.location = 'login_register.php';
+          </script>
+          <?php
+          exit(); // Stop execution if Snow White is poisoned
+        }
+
         $_SESSION["id"] = $row["id"];
         $_SESSION["role"] = $row["role"];
         

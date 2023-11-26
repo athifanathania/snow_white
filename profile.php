@@ -65,14 +65,13 @@ if(isset($_POST['update_profile'])){
               <label>Bio</label>
               <textarea name="bio" id="" style="height: 160px"><?php echo $bio; ?></textarea>
             </div>
-            <input type="submit" value="SAVE" name="update_profile"/>
-          <input type="submit" value="SAVE" />
+            <input type="submit" value="SAVE" name="update_profile" style="margin-top:70px;"/>
           </form>
 
           <!-- TOMBOL DELETE ACCOUNT -->
 
           <?php if ($_SESSION['role']=='dwarf'){
-              ?><a href="" id="delete">Delete Account</a>
+              ?><a href="delete_dwarf.php" id="delete" style="margin-top:70px;">Delete Account</a>
           <?php
           } ?>
         </div>
