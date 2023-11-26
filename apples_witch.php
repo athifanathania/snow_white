@@ -9,11 +9,11 @@ if(isset($_GET['del'])){
     $delete = mysqli_query($koneksi,"DELETE FROM apel WHERE id='$id'");
     if($delete){
         ?>
-        <script>
-            alert('Apple berhasil dihapus!');
-            document.location = 'apples.php';
-        </script>
-        <?php
+<script>
+alert('Apple berhasil dihapus!');
+document.location = 'apples.php';
+</script>
+<?php
     }
 }
 ?>
@@ -34,16 +34,7 @@ if(isset($_GET['del'])){
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-        <td class="action">
-          <a class="update" href="insert_apple.html">update</a
-          ><a class="delete" href="">delete</a>
-        </td>
-      </tr>
-    <?php
+      <?php
     $no = 1;
     while ($lihatapel = mysqli_fetch_array($viewapel)){
         echo "
@@ -51,14 +42,16 @@ if(isset($_GET['del'])){
                 <td>$no</td>
                 <td>$lihatapel[jenis_apel]</td>
                 <td>$lihatapel[detail_apel]</td>
-                <td>";?>
-                  <a class="update" href="<?php echo 'update_apple.php?edit=' . $lihatapel['id']; ?>">update</a>
-                  <a class="delete" href="<?php echo 'apples_witch.php?del=' . $lihatapel['id']; ?>">delete</a>
-                </td>
-            </tr><?php 
+                <td><a class='update' href=update_apple.php?edit=$lihatapel[id]>update</a>
+      <a class='delete' href=apples_witch.php?del=$lihatapel[id]>delete</a></td>
+      </tr>
+
+      ";?>
+      <?php 
         $no++;
     }
     ?>
+
     </tbody>
   </table>
 </div>
