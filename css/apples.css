@@ -47,6 +47,7 @@
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
 }
+
 .text-prince {
   color: #fff;
   font-family: dans-disney-ui;
@@ -58,6 +59,7 @@
   margin-top: 140px;
   -webkit-text-stroke: 1px black;
 }
+
 .img-prince {
   padding-top: 50px;
 }
@@ -124,6 +126,7 @@
   padding-top: 20px;
   margin-left: 70px;
 }
+
 .btn-insert {
   position: absolute;
   padding-top: 120px;
@@ -135,6 +138,7 @@
 .btn-insert:hover {
   opacity: 0.9;
 }
+
 .container-table {
   position: absolute;
   padding-top: 170px;
@@ -162,14 +166,16 @@ th {
 td {
   text-align: center;
 }
-thead > tr > th {
+
+thead>tr>th {
   background-color: #000000;
 }
 
-tbody > tr:hover {
+tbody>tr:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
-tbody > td {
+
+tbody>td {
   position: relative;
 }
 
@@ -180,7 +186,7 @@ tbody > td {
   gap: 30px;
 }
 
-.action > a {
+.action>a {
   text-decoration: none;
   width: 80px;
   height: 25px;

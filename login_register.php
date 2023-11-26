@@ -1,3 +1,102 @@
+<?php
+include("koneksi.php");
+session_start();
+
+//Login halaman snow white
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = mysqli_query($koneksi,"SELECT * FROM user WHERE username = '$username' AND password = '$password'");
+    if($query -> num_rows == 1){
+        $row = $query->fetch_assoc();
+        $_SESSION["id"] = $row["id"];
+        $_SESSION["role"] = $row["role"];
+        
+        switch($row["role"]){
+          case "snow_white":
+            header("Location: home.php");
+            break;
+          case "witch":
+            $message = "This page is specifically for non-witches";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            break;
+          case "prince":
+            header("Location: home.php");
+            break;
+          case "dwarf":
+            header("Location: home.php");
+            break;
+          default:
+            ?>
+        <script>alert("Username atau password salah");</script>
+        <?php
+            header("Location: login_register.php");
+        }
+    }
+}
+
+//Login halaman witch
+if(isset($_POST['login2'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = mysqli_query($koneksi,"SELECT * FROM user WHERE username = '$username' AND password = '$password'");
+    if($query -> num_rows == 1){
+        $row = $query->fetch_assoc();
+        $_SESSION["id"] = $row["id"];
+        $_SESSION["role"] = $row["role"];
+        switch($row["role"]){
+          case "snow_white":
+            $message1 = "This page is specifically for witches.";
+            echo "<script type='text/javascript'>alert('$message1');</script>";
+            break;
+          case "witch":
+            header("Location: home.php");
+            break;
+          case "prince":
+            $message1 = "This page is specifically for witches.";
+            echo "<script type='text/javascript'>alert('$message1');</script>";
+            break;
+          case "dwarf":
+            $message1 = "This page is specifically for witches.";
+            echo "<script type='text/javascript'>alert('$message1');</script>";
+            break;
+          default:
+            header("Location: login_register.php");
+        }
+    }else{
+      ?><script>alert("Username atau password salah");</script><?php
+    }
+  }
+
+//Register akun
+if(isset($_POST['register'])){
+    $username = $_POST['username'];
+    $name = $_POST['name'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $role = $_POST['role'];
+
+    if ($role == 'prince') {
+        $foto = 'prince_profile.svg';
+    } else if ($role == 'dwarf') {
+        $foto = 'dwarf_profile.svg';
+    }
+
+    if($password == $confirm_password){
+        $register = mysqli_query($koneksi, "INSERT INTO user (username, name, password, role, foto) VALUES ('$username', '$name', '$password', '$role', '$foto')");
+        if ($register) {
+        ?><script>alert('berhasil'); document.location = "login_register.php"</script><?php
+    } else {
+        echo "Gagal mendaftar. Pesan kesalahan: " . mysqli_error($koneksi);
+    }
+    } else {
+        ?><script>alert('Password tidak sesuai. Silakan coba lagi.');</script> <?php
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,28 +147,30 @@
             </div>
             <p id="text-log">Welcome to Your Story</p>
             <!-- form login -->
-            <form action="" id="login" class="input-group">
-              <input
+            <form action="" id="login" class="input-group" method="post"> 
+            <input
                 type="text"
-                id="inputUsername"
                 class="input-field"
                 placeholder="Username"
+                name="username"
                 required
               />
               <input
                 type="password"
                 class="input-field"
                 placeholder="Password"
+                name="password"
                 required
-              /><button type="submit" class="submit-btn">Log In</button>
+              /><button type="submit" class="submit-btn" name="login">Log In</button>
             </form>
             <!-- Form Register -->
-            <form action="" id="register" class="input-group hidden">
+            <form action="" method="post" id="register" class="input-group hidden">
               <p>Start Your Story</p>
               <input
                 type="text"
                 class="input-field"
                 placeholder="Username"
+                name="username" 
                 required
               />
 
@@ -77,6 +178,7 @@
                 type="text"
                 class="input-field"
                 placeholder="Name"
+                name='name'
                 required
               />
 
@@ -84,21 +186,23 @@
                 type="password"
                 class="input-field"
                 placeholder="Password"
+                name="password"
+                required
               />
 
               <input
                 type="password"
                 class="input-field"
                 placeholder="Confirm Password"
+                name="confirm_password"
               />
               <div>
-                <label>Role :</label> <input type="radio" name="role" /><label
-                  >Prince</label
-                >
-                <input type="radio" name="role" /><label>Dwarf</label>
+                <label>Role :</label> 
+                <label><input type="radio" name="role" value="prince"/>Prince</label>
+                <label><input type="radio" name="role" value="dwarf" />Dwarf</label>
               </div>
 
-              <button type="submit" class="btn-register">Register</button>
+              <button type="submit" class="btn-register" name="register">Register</button>
             </form>
           </div>
         </div>
@@ -110,21 +214,21 @@
           <div class="form-box">
             <p id="text-log-witch">Welcome to Your Story</p>
             <!-- form login -->
-            <form action="" id="login" class="input-group">
+            <form action="" id="login" class="input-group" method="post">
               <input
                 type="text"
-                id="inputUsername"
                 class="input-field"
                 placeholder="Username"
+                name="username"
                 required
-                oninput="checkWitch()"
               />
               <input
                 type="password"
                 class="input-field"
                 placeholder="Password"
+                name="password"
                 required
-              /><button type="submit" class="submit-btn">Log In</button>
+              /><button type="submit" class="submit-btn" name="login2">Log In</button>
             </form>
           </div>
         </div>
@@ -181,6 +285,7 @@
       function hideAnimated() {
         var btn = document.getElementById("btn")
         var toggle = document.querySelector(".toggle-btn")
+
         btn.classList.toggle("hidden")
         toggle.classList.toggle("hidden")
       }

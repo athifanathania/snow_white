@@ -1,3 +1,7 @@
+<?php
+include "koneksi.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,7 +23,7 @@
             <a href="home.html"><li>HOME</li></a>
             <a href="profile.html"><li>PROFILE</li></a>
             <a href="apples.html"><li>APPLES</li></a>
-            <a href="#"><li id="logout">LOG OUT</li></a>
+            <a href="logout.php"><li id="logout">LOG OUT</li></a>
           </ul>
         </div>
         <img src="images/now whit.svg" alt="logo" />

@@ -11,6 +11,7 @@
 .content {
   margin-top: 50px;
 }
+
 .form-profile {
   margin-top: 25px;
   margin-left: 40px;
@@ -94,6 +95,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   opacity: 0.7;
 }
+
 label {
   position: absolute;
   top: -9px;
