@@ -10,7 +10,7 @@ if(!isset($_SESSION['role'])){
   exit();
 }
 
-header('Refresh: 5; URL=login_register.php');
+header('Refresh: 5; URL=logout.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
