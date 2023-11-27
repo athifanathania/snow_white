@@ -40,7 +40,7 @@ if(!isset($_SESSION['role'])){
           </a>
         </ul>
       </div>
-      <img src="images/now whit.svg" alt="logo" />
+      <img src="images/snowwhite.svg" alt="logo" />
     </nav>
     <h1>Snow White and The Seven Dwarfs</h1>
     <div class="content">

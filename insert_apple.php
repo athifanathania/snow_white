@@ -60,7 +60,7 @@ document.location = 'apples.php';
           </a>
         </ul>
       </div>
-      <img src="images/now whit.svg" alt="logo" />
+      <img src="images/snowwhite.svg" alt="logo" />
     </nav>
     <div class="content">
       <img class="img-witch" src="images/witch (3).png" />

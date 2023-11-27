@@ -16,11 +16,11 @@ if(isset($_POST['login'])){
         $row = $query->fetch_assoc();
         if ($row['role'] == 'snow_white' && $row['status'] == 'poisoned') {
           ?>
-          <script>
-            alert("You cannot log in. Snow White is poisoned!");
-            document.location = 'login_register.php';
-          </script>
-          <?php
+<script>
+alert("You cannot log in. Snow White is poisoned!");
+document.location = 'login_register.php';
+</script>
+<?php
           exit(); // Stop execution if Snow White is poisoned
         }
 
@@ -46,11 +46,11 @@ if(isset($_POST['login'])){
         }
     }else{
         ?>
-          <script>
-          alert("Username atau password salah");
-          document.location = "login_register.php";
-          </script>
-      <?php
+<script>
+alert("Username atau password salah");
+document.location = "login_register.php";
+</script>
+<?php
     }
 }
 
@@ -109,9 +109,9 @@ if(isset($_POST['register'])){
 
     if($check_result) {
         ?><script>
-        alert('Password sudah digunakan. Silakan gunakan yang lain.');
-        document.location = 'login_register.php';
-        </script> <?php
+alert('Password sudah digunakan. Silakan gunakan yang lain.');
+document.location = 'login_register.php';
+</script> <?php
         exit(); 
     }
 
@@ -121,16 +121,16 @@ if(isset($_POST['register'])){
         $register = mysqli_query($koneksi, "INSERT INTO user (username, name, password, role, foto) VALUES ('$username', '$name', '$password', '$role', '$foto')");
         if ($register) {
         ?><script>
-          alert('Berhasil registrasi');
-          document.location = "login_register.php"
-          </script><?php
+alert('Berhasil registrasi');
+document.location = "login_register.php"
+</script><?php
         } else {
             echo "Gagal mendaftar. Pesan kesalahan: " . mysqli_error($koneksi);
         }
     } else {
       ?><script>
-        alert('Password tidak sesuai. Silakan coba lagi.');
-      </script> <?php
+alert('Password tidak sesuai. Silakan coba lagi.');
+</script> <?php
     }    
 }
 ?>
@@ -170,7 +170,7 @@ if(isset($_POST['register'])){
     <div class="card-login-snow-white">
       <div class="left-login-snow"></div>
       <div class="right-login">
-        <img src="images/now whit.svg" class="logo" />
+        <img src="images/snowwhite.svg" class="logo" />
         <div class="form-box">
           <!-- toggle button  login-register -->
           <div class="button-box">
@@ -213,7 +213,7 @@ if(isset($_POST['register'])){
     <div class="card-login-witch">
       <div class="left-login-witch"></div>
       <div class="right-login">
-        <img src="images/now whit.svg" class="logo" />
+        <img src="images/snowwhite.svg" class="logo" />
         <div class="form-box">
           <p id="text-log-witch">Welcome to Your Story</p>
           <!-- form login -->

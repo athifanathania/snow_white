@@ -92,7 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
             include ("apples_dwarf.php");
             break;
           case "snow_white":
-            ?>
+            if ($_SESSION['role'] != 'snow_white') {
+            header('Location: home.php');
+            exit();
+        }?>
       <img class="snow-white-apple" src="images/apples_img.png" width="250px" />
       <p class="p-snow-white">
         Snow White is hungry. Choose an apple for Snow White !
@@ -100,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
 
       <div class="grid-apples">
         <?php
-              
               $viewapel = mysqli_query($koneksi,"SELECT * FROM apel");
               $images = glob('images/apples/{*.svg}', GLOB_BRACE);
 
