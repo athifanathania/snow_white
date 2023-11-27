@@ -42,6 +42,7 @@ if(isset($_POST['login'])){
             header("Location: home.php");
             break;
           default:
+          
         }
     }else{
         ?>
@@ -103,21 +104,34 @@ if(isset($_POST['register'])){
         $foto = 'dwarf_profile.svg';
     }
 
+    $check_query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+    $check_result = mysqli_fetch_assoc($check_query);
+
+    if($check_result) {
+        ?><script>
+        alert('Password sudah digunakan. Silakan gunakan yang lain.');
+        document.location = 'login_register.php';
+        </script> <?php
+        exit(); 
+    }
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
     if($password == $confirm_password){
         $register = mysqli_query($koneksi, "INSERT INTO user (username, name, password, role, foto) VALUES ('$username', '$name', '$password', '$role', '$foto')");
         if ($register) {
         ?><script>
-alert('berhasil');
-document.location = "login_register.php"
-</script><?php
+          alert('Berhasil registrasi');
+          document.location = "login_register.php"
+          </script><?php
+        } else {
+            echo "Gagal mendaftar. Pesan kesalahan: " . mysqli_error($koneksi);
+        }
     } else {
-        echo "Gagal mendaftar. Pesan kesalahan: " . mysqli_error($koneksi);
-    }
-    } else {
-        ?><script>
-alert('Password tidak sesuai. Silakan coba lagi.');
-</script> <?php
-    }
+      ?><script>
+        alert('Password tidak sesuai. Silakan coba lagi.');
+      </script> <?php
+    }    
 }
 ?>
 
