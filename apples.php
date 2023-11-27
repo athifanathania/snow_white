@@ -7,6 +7,11 @@ if(!isset($_SESSION['role'])){
 }
 $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM user WHERE username='snow_white' LIMIT 1"));
 
+if($_SESSION['role']=="snow_white" && $snow_white_status['status'] == "poisoned"){
+  header('Location:login_register.php');
+  exit();
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
             $selected_apple = $_POST['selected_apple'];
