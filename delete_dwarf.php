@@ -2,6 +2,14 @@
 session_start();
 include "koneksi.php";
 
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+} elseif($_SESSION['role'] != 'dwarf'){
+  header('Location: home.php');
+  exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_SESSION['id'];
     $delete_query = mysqli_query($koneksi, "DELETE FROM user WHERE id='$id'");

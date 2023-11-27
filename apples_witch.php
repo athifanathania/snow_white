@@ -2,6 +2,14 @@
 include "koneksi.php";
 session_start();
 
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+} elseif($_SESSION['role'] != 'witch'){
+  header('Location: home.php');
+  exit();
+}
+
 $viewapel = mysqli_query($koneksi,"SELECT * FROM apel");
 
 if(isset($_GET['del'])){
@@ -9,10 +17,10 @@ if(isset($_GET['del'])){
     $delete = mysqli_query($koneksi,"DELETE FROM apel WHERE id='$id'");
     if($delete){
         ?>
-<script>
-alert('Apple berhasil dihapus!');
-document.location = 'apples.php';
-</script>
+      <script>
+      alert('Apple berhasil dihapus!');
+      document.location = 'apples.php';
+      </script>
 <?php
     }
 }

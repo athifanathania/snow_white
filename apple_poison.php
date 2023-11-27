@@ -1,6 +1,15 @@
 <?php
 include "koneksi.php";
 session_start();
+
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+} elseif($_SESSION['role'] != 'snow_white'){
+  header('Location: home.php');
+  exit();
+}
+
 header('Refresh: 5; URL=login_register.php');
 ?>
 <!DOCTYPE html>

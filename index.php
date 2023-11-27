@@ -1,3 +1,12 @@
+<?php
+include "koneksi.php";
+session_start();
+
+if(isset($_SESSION['role'])){
+  header('Location: home.php');
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

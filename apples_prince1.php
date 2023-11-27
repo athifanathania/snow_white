@@ -2,6 +2,14 @@
 include "koneksi.php";
 session_start();
 
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+} elseif($_SESSION['role'] != 'prince'){
+  header('Location: home.php');
+  exit();
+}
+
 if(isset($_POST['btn_heal'])){
     $query = mysqli_query($koneksi,"UPDATE user SET status = 'healthy' where id=1");
     if($query){

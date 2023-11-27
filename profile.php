@@ -2,6 +2,10 @@
 <?php
 include "koneksi.php";
 session_start();
+if(!isset($_SESSION['role'])){
+  header ('Location: login_register.php');
+  exit();
+}
 $id = $_SESSION['id'];
 $snowwhite = mysqli_query($koneksi,"SELECT name, status,foto,bio FROM user WHERE id='$id';");
 

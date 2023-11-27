@@ -2,6 +2,14 @@
 include "koneksi.php";
 session_start();
 
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+} elseif($_SESSION['role'] != 'witch'){
+  header('Location: home.php');
+  exit();
+}
+
 if(isset($_POST['insert'])){
     $jenis_apel = $_POST['jenis_apel'];
     $detail_apel = $_POST['detail_apel'];

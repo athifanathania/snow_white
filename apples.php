@@ -1,9 +1,40 @@
 <?php
 include "koneksi.php";
 session_start();
-        $role = $_SESSION['role'];
+if(!isset($_SESSION['role'])){
+  header('Location: login_register.php');
+  exit();
+}
 $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM user WHERE username='snow_white' LIMIT 1"));
 
+function decreaseApplesCount($amount = 1)
+{
+    if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
+        $_SESSION['apples_count'] -= $amount;
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
+            $selected_apple = $_POST['selected_apple'];
+            $selected_apel_index = $_POST['selected_apple_index'];
+            $selected_query = mysqli_query($koneksi, "SELECT * FROM apel WHERE id='$selected_apple'");
+            $selected_apel = mysqli_fetch_array($selected_query);
+
+            if ($selected_apel['detail_apel'] === 'Poisonous') {
+                $query = mysqli_query($koneksi, "UPDATE user SET status = 'poisoned' WHERE id=1");
+                if ($query) {
+                    header("Location: apple_poison.php");
+                    exit();
+                }
+            } elseif ($selected_apel['detail_apel'] === 'Fresh') {
+                if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
+                    $_SESSION['apples_count']--;
+                }
+                // Simpan indeks apel yang dipilih di session
+                $_SESSION['selected_apple_index'] = $selected_apel_index;
+            }
+}
+          
 ?>
 
 <!DOCTYPE html>
@@ -75,15 +106,19 @@ $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM us
               
               $viewapel = mysqli_query($koneksi,"SELECT * FROM apel");
               $images = glob('images/apples/{*.svg}', GLOB_BRACE);
+              $selected_apple_index = isset($_SESSION['selected_apple_index']) ? $_SESSION['selected_apple_index'] : null;
               
               while($lihatapel = mysqli_fetch_array($viewapel)){
                 $random = array_rand($images);
                 $randomImage = $images[$random];
+                $is_selected = ($selected_apple_index === $random);
                 ?>
+
                 <form method="post" action="">
                   <input type="hidden" name="selected_apple" value="<?php echo $lihatapel['id']; ?>">
+                  <input type="hidden" name="selected_apple_index" value="<?php echo $random; ?>">
                   <button type="submit" name="select_apple">
-                    <img src="<?php echo $randomImage; ?>" />
+                      <img src="<?php echo $randomImage; ?>" <?php echo ($is_selected) ? 'style="border: 2px solid red;"' : '';?> />
                   </button>
                 </form>
                 <?php
@@ -94,25 +129,9 @@ $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM us
       <?php
             break;
           default:
-          }
+          }?>
 
-          if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])){
-            $selected_apple = $_POST['selected_apple'];
-            $selected_query = mysqli_query($koneksi, "SELECT * FROM apel WHERE id='$selected_apple'");
-            $selected_apel = mysqli_fetch_array($selected_query);
-            $query = mysqli_query($koneksi,"UPDATE user SET status = 'poisoned' where id=1");
-            if($selected_apel['detail_apel'] === 'Poisonous' && $query){
-              header("Location: apple_poison.php");
-              exit();
-            }elseif ($selected_apel['detail_apel'] === 'Fresh'){
-              if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
-                $_SESSION['apples_count']--;
-              }
-            }
-          }
           
-          
-          ?>
     </div>
   </div>
 </body>
