@@ -29,27 +29,8 @@ header('Refresh: 5; URL=logout.php');
 <body>
   <div class="container">
     <nav>
-      <div id="menuToggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-          <a href="home.html">
-            <li>HOME</li>
-          </a>
-          <a href="profile.html">
-            <li>PROFILE</li>
-          </a>
-          <a href="apples.html">
-            <li>APPLES</li>
-          </a>
-          <a href="logout.php">
-            <li id="logout">LOG OUT</li>
-          </a>
-        </ul>
-      </div>
-      <img src="images/snowwhite.svg" alt="logo" />
+
+      <img src="images/snowwhite.svg" alt="logo" style="margin-left:1050px" />
     </nav>
     <div class="content">
       <img src="images/snowWhite__death-removebg-preview.png" width="500" />
