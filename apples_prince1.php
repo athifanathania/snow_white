@@ -18,7 +18,9 @@ if(isset($_POST['btn_heal'])){
         header("Location: apples.php");
         exit();
     }else{
-        ?><script>alert('Failed to cure Snow White. Please try again.')</script><?php
+        ?><script>
+alert('Failed to cure Snow White. Please try again.')
+</script><?php
     }
 }
 
@@ -28,7 +30,7 @@ if(isset($_POST['btn_heal'])){
 <p class="text-prince">CLICK THE BUTTON BELOW TO CURE SNOW WHITE</p>
 
 <form method="post" action="">
-    <button type="submit" name="btn_heal">
-        <img class="btn-heal" src="images/btn_heal.svg" />
-    </button>
+  <button type="submit" name="btn_heal">
+    <img class="btn-heal" src="images/btn_heal.svg" style="margin-left:-550px" />
+  </button>
 </form>

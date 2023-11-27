@@ -7,12 +7,6 @@ if(!isset($_SESSION['role'])){
 }
 $snow_white_status = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM user WHERE username='snow_white' LIMIT 1"));
 
-function decreaseApplesCount($amount = 1)
-{
-    if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
-        $_SESSION['apples_count'] -= $amount;
-    }
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
             $selected_apple = $_POST['selected_apple'];
@@ -26,12 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
                     header("Location: apple_poison.php");
                     exit();
                 }
-            } elseif ($selected_apel['detail_apel'] === 'Fresh') {
-                if (isset($_SESSION['apples_count']) && $_SESSION['apples_count'] > 0) {
-                    $_SESSION['apples_count']--;
-                }
-                // Simpan indeks apel yang dipilih di session
-                $_SESSION['selected_apple_index'] = $selected_apel_index;
             }
 }
           
@@ -46,6 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
   <title>Apples</title>
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/apples.css" />
+  <style>
+  #btn_apple:hover {
+    transform: scale(1.1);
+  }
+
+  .hidden {
+    display: none;
+  }
+  </style>
 </head>
 
 <body>
@@ -96,42 +93,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
             break;
           case "snow_white":
             ?>
-            <img class="snow-white-apple" src="images/apples_img.png" width="250px" />
-            <p class="p-snow-white">
-              Snow White is hungry. Choose an apple for Snow White !
-            </p>
-            
-            <div class="grid-apples">
-              <?php
+      <img class="snow-white-apple" src="images/apples_img.png" width="250px" />
+      <p class="p-snow-white">
+        Snow White is hungry. Choose an apple for Snow White !
+      </p>
+
+      <div class="grid-apples">
+        <?php
               
               $viewapel = mysqli_query($koneksi,"SELECT * FROM apel");
               $images = glob('images/apples/{*.svg}', GLOB_BRACE);
-              $selected_apple_index = isset($_SESSION['selected_apple_index']) ? $_SESSION['selected_apple_index'] : null;
+
+              // Inisialisasi atau perbarui sesi untuk menyimpan apel yang telah dipilih
+              if (!isset($_SESSION['selected_apples'])) {
+                  $_SESSION['selected_apples'] = array();
+                }
+
+              if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                  $selected_apple_id = $_POST['selected_apple'];
+                  $selected_apple_index = $_POST['selected_apple_index'];
+                  $_SESSION['selected_apples'][$selected_apple_id] = $selected_apple_index;
+              }
               
               while($lihatapel = mysqli_fetch_array($viewapel)){
                 $random = array_rand($images);
                 $randomImage = $images[$random];
-                $is_selected = ($selected_apple_index === $random);
+                $is_selected = isset($_SESSION['selected_apples'][$lihatapel['id']]);
                 ?>
 
-                <form method="post" action="">
-                  <input type="hidden" name="selected_apple" value="<?php echo $lihatapel['id']; ?>">
-                  <input type="hidden" name="selected_apple_index" value="<?php echo $random; ?>">
-                  <button type="submit" name="select_apple">
-                      <img src="<?php echo $randomImage; ?>" />
-                  </button>
-                </form>
-                <?php
+        <?php if (!$is_selected) : ?>
+        <form method="post" action="">
+          <input type="hidden" name="selected_apple" value="<?php echo $lihatapel['id']; ?>">
+          <input type="hidden" name="selected_apple_index" value="<?php echo $random; ?>">
+          <button type="submit" name="select_apple" id="btn_apple"
+            style="background-color: transparent; border-style: none; margin-bottom: 20px; margin-right: 20px; cursor: pointer;">
+            <img src="<?php echo $randomImage; ?>" />
+          </button>
+        </form>
+        <?php endif; ?>
+        <?php
                 }
                 ?>
-        
-            </div>
+
+      </div>
       <?php
             break;
           default:
           }?>
 
-          
+
     </div>
   </div>
 </body>

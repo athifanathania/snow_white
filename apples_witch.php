@@ -17,10 +17,10 @@ if(isset($_GET['del'])){
     $delete = mysqli_query($koneksi,"DELETE FROM apel WHERE id='$id'");
     if($delete){
         ?>
-      <script>
-      alert('Apple berhasil dihapus!');
-      document.location = 'apples.php';
-      </script>
+<script>
+alert('Apple berhasil dihapus!');
+document.location = 'apples.php';
+</script>
 <?php
     }
 }
