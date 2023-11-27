@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['select_apple'])) {
                   <input type="hidden" name="selected_apple" value="<?php echo $lihatapel['id']; ?>">
                   <input type="hidden" name="selected_apple_index" value="<?php echo $random; ?>">
                   <button type="submit" name="select_apple">
-                      <img src="<?php echo $randomImage; ?>" <?php echo ($is_selected) ? 'style="border: 2px solid red;"' : '';?> />
+                      <img src="<?php echo $randomImage; ?>" />
                   </button>
                 </form>
                 <?php

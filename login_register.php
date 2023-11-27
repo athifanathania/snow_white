@@ -1,6 +1,10 @@
 <?php
 include("koneksi.php");
 session_start();
+if(isset($_SESSION['role'])){
+  header ('Location: home.php');
+  exit();
+}
 
 //Login halaman snow white
 if(isset($_POST['login'])){
