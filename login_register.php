@@ -42,13 +42,14 @@ if(isset($_POST['login'])){
             header("Location: home.php");
             break;
           default:
-            ?>
-<script>
-alert("Username atau password salah");
-</script>
-<?php
-            header("Location: login_register.php");
         }
+    }else{
+        ?>
+          <script>
+          alert("Username atau password salah");
+          document.location = "login_register.php";
+          </script>
+      <?php
     }
 }
 

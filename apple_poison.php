@@ -10,6 +10,7 @@ if(!isset($_SESSION['role'])){
   exit();
 }
 
+?><script>alert('You ate a poisoned apple! You will be redirected to the login page in 5 seconds.')</script><?php
 header('Refresh: 5; URL=logout.php');
 ?>
 <!DOCTYPE html>
