@@ -201,8 +201,8 @@ alert('Password tidak sesuai. Silakan coba lagi.');
             <input type="password" class="input-field" placeholder="Confirm Password" name="confirm_password" />
             <div>
               <label>Role :</label>
-              <label><input type="radio" name="role" value="prince" />Prince</label>
-              <label><input type="radio" name="role" value="dwarf" />Dwarf</label>
+              <label><input type="radio" name="role" value="prince" required/>Prince</label>
+              <label><input type="radio" name="role" value="dwarf" required/>Dwarf</label>
             </div>
 
             <button type="submit" class="btn-register" name="register">Register</button>

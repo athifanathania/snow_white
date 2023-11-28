@@ -36,6 +36,22 @@ if(isset($_GET['edit'])){
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/apples.css" />
   <link rel="stylesheet" href="css/insert_apple.css" />
+  <style>
+    select {
+      border-style: none;
+      height: 30px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+      padding-left: 10px;
+    }
+
+    select:focus {
+      outline: 3px solid #e99ee9fc;
+  }
+  </style>
 </head>
 
 <body>
@@ -71,7 +87,11 @@ if(isset($_GET['edit'])){
           <label for="">Type :</label>
           <input type="text" name="jenis_apel" value="<?php echo $edit['jenis_apel']?>" /><br />
           <label for="">Detail :</label>
-          <input type="text" name="detail_apel" value="<?php echo $edit['detail_apel']?>" />
+          <select name="detail_apel">
+            <option><?php echo $edit['detail_apel']?></option>
+            <option>Fresh</option>
+            <option>Poisonous</option>
+          </select>
           <input type="submit" name="update" id="" class="btn-submit" value="Update" />
         </form>
       </div>
